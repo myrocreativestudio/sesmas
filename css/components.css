@@ -1,0 +1,722 @@
+/* ==========================================================================
+   SK SUNGAI MAS (JHEOA) - COMPONENTS STYLESHEET
+   Hero, Stats, Cards, Ticker, Org-Chart, Tabs, Gallery & Lightbox
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--emerald-400);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--emerald-400);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--emerald-400);
+  animation: pulseAnim 1.8s infinite;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-desc {
+  font-size: 1.12rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+  max-width: 580px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Hero Showcase Card */
+.hero-card-showcase {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 0.85rem;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  box-shadow: var(--glass-shadow-lg);
+  backdrop-filter: blur(20px);
+}
+
+.hero-img-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.hero-card-showcase:hover .hero-img {
+  transform: scale(1.05);
+}
+
+.hero-floating-glass-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(6, 13, 23, 0.78);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="light"] .hero-floating-glass-tag {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   NEWS TICKER (PENGUMUMAN PANTAS)
+   -------------------------------------------------------------------------- */
+.ticker-bar {
+  background: var(--glass-card);
+  backdrop-filter: blur(15px);
+  border-block: 1px solid var(--glass-card-border);
+  padding: 0.65rem 0;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ticker-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+  color: #2b1702;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.ticker-track {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+  position: relative;
+}
+
+.ticker-content {
+  display: inline-block;
+  animation: tickerScroll 32s linear infinite;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.ticker-track:hover .ticker-content {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 2.5rem;
+}
+
+.ticker-bullet {
+  color: var(--emerald-400);
+  margin-right: 0.6rem;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --------------------------------------------------------------------------
+   STATISTICS COUNTER CARDS
+   -------------------------------------------------------------------------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.stat-card {
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: var(--emerald-400);
+  margin-bottom: 1rem;
+}
+
+.stat-icon-wrap.gold {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--gold-400);
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  color: var(--text-main);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   GURU BESAR MESSAGE CARD
+   -------------------------------------------------------------------------- */
+.headmaster-card {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 3rem;
+  padding: 2.5rem;
+  align-items: center;
+  margin-block: 2rem 5rem;
+}
+
+.headmaster-photo-box {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.headmaster-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.headmaster-photo-box:hover .headmaster-photo {
+  transform: scale(1.04);
+}
+
+.headmaster-quote-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gold-400);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.headmaster-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.75rem;
+}
+
+.headmaster-signature-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.headmaster-signature-role {
+  font-size: 0.9rem;
+  color: var(--emerald-400);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   QUICK LINKS (PORTAL RASMI KPM & APLIKASI)
+   -------------------------------------------------------------------------- */
+.quicklinks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-block: 2rem 4rem;
+}
+
+.quicklink-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.quicklink-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold-400);
+}
+
+.quicklink-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.quicklink-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE TABS
+   -------------------------------------------------------------------------- */
+.tab-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tab-pill {
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-full);
+  background: var(--glass-card);
+  border: 1px solid var(--glass-card-border);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab-pill:hover {
+  color: var(--text-main);
+  border-color: var(--emerald-400);
+}
+
+.tab-pill.active {
+  background: linear-gradient(135deg, var(--emerald-600), var(--emerald-500));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px var(--emerald-glow);
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   ORGANIZATION CHART (CARTA PENTADBIRAN)
+   -------------------------------------------------------------------------- */
+.org-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-block: 2rem 4rem;
+}
+
+.org-card {
+  padding: 1.5rem;
+  min-width: 280px;
+  max-width: 340px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.org-avatar-ring {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--emerald-400), var(--gold-400));
+}
+
+.org-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #111a28;
+}
+
+.org-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.org-role {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--emerald-400);
+  margin-bottom: 0.5rem;
+}
+
+.org-sub-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   STAFF DIRECTORY FILTER & GRID
+   -------------------------------------------------------------------------- */
+.filter-search-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-main);
+  outline: none;
+  backdrop-filter: blur(10px);
+}
+
+.filter-input:focus {
+  border-color: var(--emerald-400);
+  box-shadow: 0 0 15px var(--emerald-glow);
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   PHOTO GALLERY & LIGHTBOX
+   -------------------------------------------------------------------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-block: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/11;
+  cursor: pointer;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 13, 23, 0.9) 0%, rgba(6, 13, 23, 0.2) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 0.35rem;
+}
+
+.gallery-overlay-date {
+  font-size: 0.8rem;
+  color: var(--emerald-300);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 14, 0.92);
+  backdrop-filter: blur(25px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content-box {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 72vh;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  object-fit: contain;
+}
+
+.lightbox-caption-bar {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.lightbox-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--font-heading);
+}
+
+.lightbox-desc {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.lightbox-close-btn, .lightbox-nav-btn {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-close-btn:hover, .lightbox-nav-btn:hover {
+  background: var(--emerald-500);
+  transform: scale(1.1);
+}
+
+.lightbox-close-btn {
+  top: -3.5rem;
+  right: 0;
+}
+
+.lightbox-prev-btn {
+  left: -4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next-btn {
+  right: -4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* --------------------------------------------------------------------------
+   SCHEDULE TABLE & TIMETABLE
+   -------------------------------------------------------------------------- */
+.timetable-glass-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.5rem;
+}
+
+.timetable-glass-table th, .timetable-glass-table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--glass-card-border);
+}
+
+.timetable-glass-table th {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--emerald-400);
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.timetable-glass-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE OVERRIDES FOR COMPONENTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .headmaster-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lightbox-prev-btn {
+    left: 0.5rem;
+  }
+
+  .lightbox-next-btn {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

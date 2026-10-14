@@ -1,0 +1,260 @@
+/* ==========================================================================
+   SK SUNGAI MAS (JHEOA) - GLASSMORPHISM DESIGN SYSTEM & TOKENS
+   Modern Frosted Glass UI with Dynamic Aurora Glowing Mesh
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Emerald Forest & Royal Gold Glow */
+  --hue-primary: 158;
+  --hue-accent: 42;
+  
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-glow: rgba(16, 185, 129, 0.35);
+
+  --gold-300: #fde047;
+  --gold-400: #facc15;
+  --gold-500: #f59e0b;
+  --gold-600: #d97706;
+  --gold-glow: rgba(245, 158, 11, 0.35);
+
+  --cyan-400: #38bdf8;
+  --cyan-glow: rgba(56, 189, 248, 0.3);
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Smooth Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+/* --------------------------------------------------------------------------
+   DARK THEME (Default - High Impact Glassmorphism)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"], :root {
+  --bg-base: #060d17;
+  --bg-secondary: #0a1424;
+  --bg-gradient: radial-gradient(circle at 15% 15%, #0d281e 0%, #060d17 50%, #05101a 100%);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  /* Glass Surface Tokens */
+  --glass-bg: rgba(13, 25, 43, 0.6);
+  --glass-bg-hover: rgba(18, 35, 60, 0.75);
+  --glass-bg-active: rgba(10, 45, 35, 0.85);
+  --glass-card: rgba(12, 26, 44, 0.55);
+  --glass-card-border: rgba(255, 255, 255, 0.12);
+  --glass-card-hover-border: rgba(52, 211, 153, 0.45);
+  
+  --glass-header: rgba(6, 13, 23, 0.72);
+  --glass-header-border: rgba(255, 255, 255, 0.08);
+
+  --glass-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  --glass-glow: 0 0 25px var(--emerald-glow);
+
+  --badge-bg: rgba(16, 185, 129, 0.16);
+  --badge-border: rgba(52, 211, 153, 0.3);
+  --badge-text: #6ee7b7;
+
+  --input-bg: rgba(10, 20, 36, 0.7);
+  --input-border: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   LIGHT THEME (Luminous Frosted Crystal)
+   -------------------------------------------------------------------------- */
+[data-theme="light"] {
+  --bg-base: #f0fdf4;
+  --bg-secondary: #e6f4ea;
+  --bg-gradient: radial-gradient(circle at 10% 20%, #dcfce7 0%, #f0fdf4 60%, #e0f2fe 100%);
+  
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-hover: rgba(255, 255, 255, 0.92);
+  --glass-bg-active: rgba(240, 253, 244, 0.95);
+  --glass-card: rgba(255, 255, 255, 0.65);
+  --glass-card-border: rgba(255, 255, 255, 0.85);
+  --glass-card-hover-border: rgba(16, 185, 129, 0.5);
+
+  --glass-header: rgba(255, 255, 255, 0.82);
+  --glass-header-border: rgba(203, 213, 225, 0.5);
+
+  --glass-shadow: 0 12px 35px -8px rgba(16, 185, 129, 0.12), 0 4px 15px -3px rgba(0, 0, 0, 0.05), inset 0 1px 0 #ffffff;
+  --glass-shadow-lg: 0 22px 50px -12px rgba(16, 185, 129, 0.18), inset 0 1px 2px #ffffff;
+  --glass-glow: 0 0 25px rgba(16, 185, 129, 0.25);
+
+  --badge-bg: rgba(16, 185, 129, 0.12);
+  --badge-border: rgba(16, 185, 129, 0.35);
+  --badge-text: #047857;
+
+  --input-bg: rgba(255, 255, 255, 0.85);
+  --input-border: rgba(203, 213, 225, 0.8);
+}
+
+/* --------------------------------------------------------------------------
+   AURORA GLOW ORBS (Dynamic Background Movement)
+   -------------------------------------------------------------------------- */
+.aurora-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.5;
+  animation: floatOrb 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.aurora-orb-1 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--emerald-500) 0%, rgba(5, 150, 105, 0) 70%);
+  top: -10%;
+  left: -5%;
+  animation-duration: 22s;
+}
+
+.aurora-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--gold-500) 0%, rgba(217, 119, 6, 0) 70%);
+  top: 30%;
+  right: -10%;
+  animation-duration: 26s;
+  animation-delay: -5s;
+}
+
+.aurora-orb-3 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--cyan-400) 0%, rgba(14, 165, 233, 0) 70%);
+  bottom: -10%;
+  left: 25%;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 45px) scale(1.12);
+  }
+  100% {
+    transform: translate(-45px, 80px) scale(0.95);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   GLASSMORPHISM CORE UTILITY CLASSES
+   -------------------------------------------------------------------------- */
+.glass-panel {
+  background: var(--glass-card);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid var(--glass-card-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  pointer-events: none;
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--glass-card-hover-border);
+  box-shadow: var(--glass-shadow-lg), var(--glass-glow);
+}
+
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.glass-badge-gold {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: var(--gold-400);
+}
+
+.glass-badge-cyan {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.35);
+  color: var(--cyan-400);
+}
+
+/* Shimmer Highlight Effect on Cards */
+.shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-hover::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.shimmer-hover:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
